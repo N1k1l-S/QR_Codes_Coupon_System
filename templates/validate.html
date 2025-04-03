@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Coupon Validation</h2>
+        <p>Coupon Code: <strong>{{ code }}</strong></p>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif success %}
+            <p class="success">{{ success }}</p>
+        {% elif used %}
+            <p class="error">❌ This coupon has already been used!</p>
+        {% else %}
+            <form method="POST">
+                <input type="password" name="password" placeholder="Enter Admin Password" required>
+                <button type="submit">✅ Mark as Used</button>
+            </form>
+        {% endif %}
+    </div>
+
+</body>
+</html>
